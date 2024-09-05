@@ -67,7 +67,7 @@ console.log("image", image)
     formData.append("file", selectedImage);
 
     try {
-      const response = await fetch(`http://192.168.29.124:3001/fileUpload`, {
+      const response = await fetch(`https://cakebackend-mhv0ga23.b4a.run/fileUpload`, {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
@@ -109,7 +109,7 @@ console.log("image", image)
     const handleCreate = async () => {
       try {
         const response = await fetch(
-          `http://192.168.29.124:3001/create-order`,
+          `https://cakebackend-mhv0ga23.b4a.run/create-order`,
           {
             method: "POST",
             headers: {

@@ -62,7 +62,7 @@ export default function DispatchNoteForm({ navigation, onFormSuccess }) {
     const handleCreate = async () => {
       try {
         const response = await fetch(
-          `http://192.168.29.124:3001/create-order`,
+          `https://cakebackend-mhv0ga23.b4a.run/create-order`,
           {
             method: "POST",
             headers: {

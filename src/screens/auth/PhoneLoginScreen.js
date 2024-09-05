@@ -91,7 +91,7 @@ const PhoneLoginScreen = ({ navigation }) => {
           value={phoneNumber}
           onChangeText={setPhoneNumber}
           placeholderTextColor="#888"
-        />
+        />        
 
         <TouchableOpacity
           style={[styles.button, isLoading && styles.buttonDisabled]}

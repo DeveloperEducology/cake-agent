@@ -28,7 +28,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
 
   const fetchBoys = async () => {
     try {
-      const response = await fetch(`http://192.168.29.124:3001/deliveryboys`, {
+      const response = await fetch(`https://cakebackend-mhv0ga23.b4a.run/deliveryboys`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
     const orderId = cakeOrder?._id;
     try {
       const response = await fetch(
-        `http://192.168.29.124:3001/orders/${orderId}`,
+        `https://cakebackend-mhv0ga23.b4a.run/orders/${orderId}`,
         {
           method: "PUT", // or "POST" if you are creating a new resource
           headers: {

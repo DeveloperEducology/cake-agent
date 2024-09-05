@@ -46,7 +46,7 @@ const CakeBookingList = ({ navigation }) => {
   const userPosts = async () => {
     try {
       const response = await fetch(
-        `http://192.168.29.124:3001/orders/${userId}`,
+        `https://cakebackend-mhv0ga23.b4a.run/orders/${userId}`,
         {
           method: "GET",
           headers: {
@@ -76,7 +76,7 @@ const CakeBookingList = ({ navigation }) => {
   const handleDelete = async (bookingId) => {
     try {
       const response = await fetch(
-        `http://192.168.29.124:3001/delete-order/${bookingId}`,
+        `https://cakebackend-mhv0ga23.b4a.run/delete-order/${bookingId}`,
         {
           method: "DELETE",
           headers: {

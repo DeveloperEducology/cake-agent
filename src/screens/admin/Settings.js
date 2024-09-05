@@ -16,9 +16,10 @@ const Settings = ({ navigation }) => {
   const [stats, setStats] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-  const API_URL = "http://192.168.29.124:3001/order-stats";
+  const API_URL = "https://cakebackend-mhv0ga23.b4a.run/order-stats";
 
   const filterStats = stats.filter((stat) => stat.agentId === userId);
+  console.log("fit stats", filterStats)
 
   const getOrderCountsByStatusForAgents = async () => {
     try {
@@ -86,15 +87,6 @@ const Settings = ({ navigation }) => {
         <Text style={styles.userName}>{userData?.name}</Text>
       </View>
 
-      {userData?.userType === "admin" && (
-        <Button
-          mode="contained"
-          style={styles.button}
-          onPress={() => navigation.navigate("ListAgents")}
-        >
-          List Agents
-        </Button>
-      )}
 
       <FlatList
         data={filterStats}

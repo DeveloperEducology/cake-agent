@@ -18,7 +18,7 @@ const CreateAgent = ({ navigation }) => {
 
     console.log("Sending Data:", formData);
     try {
-      const response = await fetch("http://192.168.29.124:3001/agents", {
+      const response = await fetch("https://cakebackend-mhv0ga23.b4a.run/agents", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
