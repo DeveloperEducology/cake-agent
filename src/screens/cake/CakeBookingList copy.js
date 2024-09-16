@@ -39,7 +39,7 @@ const CakeBookingList = ({ navigation }) => {
   const userPosts = async () => {
     try {
       const response = await fetch(
-        `https://cakebackend-mhv0ga23.b4a.run/orders/${userId}`,
+        `http://192.168.29.124:3001/orders/${userId}`,
         {
           method: "GET",
           headers: {
@@ -69,7 +69,7 @@ const CakeBookingList = ({ navigation }) => {
   const handleDelete = async (bookingId) => {
     try {
       const response = await fetch(
-        `https://cakebackend-mhv0ga23.b4a.run/delete-order/${bookingId}`,
+        `http://192.168.29.124:3001/delete-order/${bookingId}`,
         {
           method: "DELETE",
           headers: {
@@ -143,7 +143,9 @@ const CakeBookingList = ({ navigation }) => {
             renderItem={({ item }) => (
               <Card
                 style={styles.card}
-                onPress={() => navigation.navigate("details", {cakeOrder: item})}
+                onPress={() =>
+                  navigation.navigate("details", { cakeOrder: item })
+                }
               >
                 <Card.Title
                   title={`${item.senderName} ➔ ${item.receiverName}`}
@@ -178,7 +180,7 @@ const CakeBookingList = ({ navigation }) => {
                   <Paragraph>Special Wishes: {item.specialWishes}</Paragraph>
                   <Paragraph>order_date: {item.order_date}</Paragraph>
                   <Paragraph>deliveryDate: {item.deliveryDate}</Paragraph>
-                  <Paragraph>Time: {item.time || "6pm to 8pm" }</Paragraph>
+                  <Paragraph>Time: {item.time || "6pm to 8pm"}</Paragraph>
                   <Paragraph>Sender Phone: {item.senderPhoneNumber}</Paragraph>
                   <Paragraph>
                     Receiver Phone: {item.receiverPhoneNumber}

@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, FlatList, RefreshControl } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  RefreshControl,
+} from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { saveUserData } from "../../redux/reducers/auth";
@@ -16,10 +23,10 @@ const Settings = ({ navigation }) => {
   const [stats, setStats] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-  const API_URL = "https://cakebackend-mhv0ga23.b4a.run/order-stats";
+  const API_URL = "http://192.168.29.124:3001/order-stats";
 
   const filterStats = stats.filter((stat) => stat.agentId === userId);
-  console.log("fit stats", filterStats)
+  console.log("fit stats", filterStats);
 
   const getOrderCountsByStatusForAgents = async () => {
     try {
@@ -86,7 +93,6 @@ const Settings = ({ navigation }) => {
         />
         <Text style={styles.userName}>{userData?.name}</Text>
       </View>
-
 
       <FlatList
         data={filterStats}

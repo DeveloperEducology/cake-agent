@@ -20,7 +20,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
   const [formData, setFormData] = useState(cakeOrder);
   const [status, setStatus] = React.useState(formData?.status || "");
   const [boys, setBoys] = useState([]);
-  const [deliveryBoy, setDeliveryBoy] = useState("");
+  const [deliveryBoyId, setDeliveryBoyId] = useState("");
 
   useEffect(() => {
     fetchBoys();
@@ -28,7 +28,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
 
   const fetchBoys = async () => {
     try {
-      const response = await fetch(`https://cakebackend-mhv0ga23.b4a.run/deliveryboys`, {
+      const response = await fetch(`http://192.168.29.124:3001/deliveryboys`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
   };
 
   const handleSave = async () => {
-    const updatedOrder = { ...formData, status, deliveryBoy };
+    const updatedOrder = { ...formData, status, deliveryBoyId };
     await updateOrder(updatedOrder);
     setModalVisible(false);
     navigation.goBack();
@@ -64,7 +64,7 @@ const CakeOrderDetails = ({ route, navigation }) => {
     const orderId = cakeOrder?._id;
     try {
       const response = await fetch(
-        `https://cakebackend-mhv0ga23.b4a.run/orders/${orderId}`,
+        `http://192.168.29.124:3001/orders/${orderId}`,
         {
           method: "PUT", // or "POST" if you are creating a new resource
           headers: {
@@ -302,10 +302,10 @@ const CakeOrderDetails = ({ route, navigation }) => {
               <View>
                 <Text style={styles.label}>Select a delivery boy:</Text>
                 <Picker
-                  deliveryBoy={deliveryBoy}
+                  deliveryBoy={deliveryBoyId}
                   style={styles.picker}
                   onValueChange={(itemValue, itemIndex) =>
-                    setDeliveryBoy(itemValue)
+                    setDeliveryBoyId(itemValue)
                   }
                 >
                   {Array.isArray(boys) &&
@@ -313,12 +313,10 @@ const CakeOrderDetails = ({ route, navigation }) => {
                       <Picker.Item
                         key={boy._id}
                         label={boy.name}
-                        value={boy.name}
+                        value={boy._id}
                       />
                     ))}
                 </Picker>
-
-                <Text style={styles.selectedText}>Selected: {deliveryBoy}</Text>
               </View>
             </ScrollView>
 

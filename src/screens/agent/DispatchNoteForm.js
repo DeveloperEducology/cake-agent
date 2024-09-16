@@ -53,7 +53,7 @@ export default function DispatchNoteForm({ navigation, onFormSuccess }) {
     });
   };
 
-console.log("image", image)
+  console.log("image", image);
 
   const handlePhotoUpload = async () => {
     if (!selectedImage) {
@@ -67,7 +67,7 @@ console.log("image", image)
     formData.append("file", selectedImage);
 
     try {
-      const response = await fetch(`https://cakebackend-mhv0ga23.b4a.run/fileUpload`, {
+      const response = await fetch(`http://192.168.29.124:3001/fileUpload`, {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
@@ -109,7 +109,7 @@ console.log("image", image)
     const handleCreate = async () => {
       try {
         const response = await fetch(
-          `https://cakebackend-mhv0ga23.b4a.run/create-order`,
+          `http://192.168.29.124:3001/create-order`,
           {
             method: "POST",
             headers: {
@@ -146,287 +146,289 @@ console.log("image", image)
         <Text style={styles.title}>Dispatch Note Form</Text>
 
         {/* Sender Name */}
-        <Text style={styles.label}>Sender Name:</Text>
-        <Controller
-          control={control}
-          name="senderName"
-          defaultValue="Sheetal"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              // editable={false} // Disabled as it's static
-            />
-          )}
-        />
-
-        {/* Sender Number */}
-        <Text style={styles.label}>Sender Number:</Text>
-        <Controller
-          control={control}
-          name="senderPhoneNumber"
-          defaultValue="9347838726"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="numeric"
-            />
-          )}
-        />
-
-        {/* Receiver Name */}
-        <Text style={styles.label}>Receiver Name:</Text>
-        <Controller
-          control={control}
-          name="receiverName"
-          defaultValue="vijay"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-            />
-          )}
-        />
-        {/* Receiver Number */}
-        <Text style={styles.label}>Receiver Number:</Text>
-        <Controller
-          control={control}
-          name="receiverPhoneNumber"
-          defaultValue="22222222"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="numeric"
-            />
-          )}
-        />
-
-        {/* Price */}
-        <Text style={styles.label}>Price:</Text>
-        <Controller
-          control={control}
-          name="price"
-          defaultValue="1200"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="numeric"
-            />
-          )}
-        />
-
-        {/* Shipping Address */}
-        <Text style={styles.label}>Shipping Address:</Text>
-        <Controller
-          control={control}
-          name="shippingAddress"
-          defaultValue="D 1002 Aparna towers kondapur floor 10th, Hyderabad, 500084"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              multiline
-            />
-          )}
-        />
-
-        {/* Product Name */}
-        <Text style={styles.label}>Product Name:</Text>
-        <Controller
-          control={control}
-          name="cakeName"
-          defaultValue="Football Player Cake"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-            />
-          )}
-        />
-
-        {/* Weight */}
-        <Text style={styles.label}>Weight:</Text>
-        <Controller
-          control={control}
-          name="weight"
-          defaultValue="1 Kg"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-            />
-          )}
-        />
-
-        {/* Flavor */}
-        <Text style={styles.label}>Flavor:</Text>
-        <Controller
-          control={control}
-          name="flavor"
-          defaultValue="Light Chocolate"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-            />
-          )}
-        />
-
-        {/* Message on Card */}
-        <Text style={styles.label}>Message on Card:</Text>
-        <Controller
-          control={control}
-          name="messageOnCard"
-          defaultValue="HappyBirthdayRudhwikram"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              multiline
-            />
-          )}
-        />
-
-        {/* Special Instructions */}
-        <Text style={styles.label}>Special Instructions:</Text>
-        <Controller
-          control={control}
-          name="specialInstructions"
-          defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              multiline
-            />
-          )}
-        />
-
-        {/* Shipping Info */}
-        <Text style={styles.label}>Shipping Info:</Text>
-        <Controller
-          control={control}
-          name="shippingInfo"
-          defaultValue="City - Hyderabad, Pincode - 500084"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              multiline
-            />
-          )}
-        />
-
-        {/* Shipping Date */}
-        <Text style={styles.label}>Shipping Date:</Text>
-        <Button onPress={() => setShowDatePicker(true)}>
-          {date.toDateString()}
-        </Button>
-        {showDatePicker && (
-          <DateTimePicker
-            value={date}
-            mode="date"
-            display="default"
-            onChange={(event, selectedDate) => {
-              setShowDatePicker(false);
-              if (selectedDate) {
-                setDate(selectedDate);
-              }
-            }}
+        <View>
+          <Text style={styles.label}>Sender Name:</Text>
+          <Controller
+            control={control}
+            name="senderName"
+            defaultValue="Sheetal"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                // editable={false} // Disabled as it's static
+              />
+            )}
           />
-        )}
 
-        {/* Shipping Time */}
-        <Text style={styles.label}>Shipping Time:</Text>
-        <Controller
-          control={control}
-          name="shippingTime"
-          defaultValue="09:00 - 21:00"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
+          {/* Sender Number */}
+          <Text style={styles.label}>Sender Number:</Text>
+          <Controller
+            control={control}
+            name="senderPhoneNumber"
+            defaultValue="9347838726"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            )}
+          />
+
+          {/* Receiver Name */}
+          <Text style={styles.label}>Receiver Name:</Text>
+          <Controller
+            control={control}
+            name="receiverName"
+            defaultValue="vijay"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
+          {/* Receiver Number */}
+          <Text style={styles.label}>Receiver Number:</Text>
+          <Controller
+            control={control}
+            name="receiverPhoneNumber"
+            defaultValue="22222222"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            )}
+          />
+
+          {/* Price */}
+          <Text style={styles.label}>Price:</Text>
+          <Controller
+            control={control}
+            name="price"
+            defaultValue="1200"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            )}
+          />
+
+          {/* Shipping Address */}
+          <Text style={styles.label}>Shipping Address:</Text>
+          <Controller
+            control={control}
+            name="shippingAddress"
+            defaultValue="D 1002 Aparna towers kondapur floor 10th, Hyderabad, 500084"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                multiline
+              />
+            )}
+          />
+
+          {/* Product Name */}
+          <Text style={styles.label}>Product Name:</Text>
+          <Controller
+            control={control}
+            name="cakeName"
+            defaultValue="Football Player Cake"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
+
+          {/* Weight */}
+          <Text style={styles.label}>Weight:</Text>
+          <Controller
+            control={control}
+            name="weight"
+            defaultValue="1 Kg"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
+
+          {/* Flavor */}
+          <Text style={styles.label}>Flavor:</Text>
+          <Controller
+            control={control}
+            name="flavor"
+            defaultValue="Light Chocolate"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
+
+          {/* Message on Card */}
+          <Text style={styles.label}>Message on Card:</Text>
+          <Controller
+            control={control}
+            name="messageOnCard"
+            defaultValue="HappyBirthdayRudhwikram"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                multiline
+              />
+            )}
+          />
+
+          {/* Special Instructions */}
+          <Text style={styles.label}>Special Instructions:</Text>
+          <Controller
+            control={control}
+            name="specialInstructions"
+            defaultValue=""
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                multiline
+              />
+            )}
+          />
+
+          {/* Shipping Info */}
+          <Text style={styles.label}>Shipping Info:</Text>
+          <Controller
+            control={control}
+            name="shippingInfo"
+            defaultValue="City - Hyderabad, Pincode - 500084"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                multiline
+              />
+            )}
+          />
+
+          {/* Shipping Date */}
+          <Text style={styles.label}>Shipping Date:</Text>
+          <Button onPress={() => setShowDatePicker(true)}>
+            {date.toDateString()}
+          </Button>
+          {showDatePicker && (
+            <DateTimePicker
+              value={date}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                setShowDatePicker(false);
+                if (selectedDate) {
+                  setDate(selectedDate);
+                }
+              }}
             />
           )}
-        />
 
-        {/* Quantity */}
-        <Text style={styles.label}>Quantity:</Text>
-        <Controller
-          control={control}
-          name="quantity"
-          defaultValue="1"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-            />
-          )}
-        />
+          {/* Shipping Time */}
+          <Text style={styles.label}>Shipping Time:</Text>
+          <Controller
+            control={control}
+            name="shippingTime"
+            defaultValue="09:00 - 21:00"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
 
-        {/* Total Payment */}
-        <Text style={styles.label}>Total Payment:</Text>
-        <Controller
-          control={control}
-          name="totalPayment"
-          defaultValue="0"
-          render={({ field: { value } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              editable={false} // Calculated field
-            />
-          )}
-        />
+          {/* Quantity */}
+          <Text style={styles.label}>Quantity:</Text>
+          <Controller
+            control={control}
+            name="quantity"
+            defaultValue="1"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
+          />
 
-        {/* Advanced Payment */}
-        <Text style={styles.label}>Advanced Payment:</Text>
-        <Controller
-          control={control}
-          name="advance_payment"
-          defaultValue="0"
-          render={({ field: { value, onChange } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="numeric"
-            />
-          )}
-        />
+          {/* Total Payment */}
+          <Text style={styles.label}>Total Payment:</Text>
+          <Controller
+            control={control}
+            name="totalPayment"
+            defaultValue="0"
+            render={({ field: { value } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                editable={false} // Calculated field
+              />
+            )}
+          />
 
-        {/* Balance Payment */}
-        <Text style={styles.label}>Balance Payment:</Text>
-        <Controller
-          control={control}
-          name="balance_payment"
-          defaultValue="0"
-          render={({ field: { value, onChange } }) => (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="numeric"
-            />
-          )}
-        />
+          {/* Advanced Payment */}
+          <Text style={styles.label}>Advanced Payment:</Text>
+          <Controller
+            control={control}
+            name="advance_payment"
+            defaultValue="0"
+            render={({ field: { value, onChange } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            )}
+          />
+
+          {/* Balance Payment */}
+          <Text style={styles.label}>Balance Payment:</Text>
+          <Controller
+            control={control}
+            name="balance_payment"
+            defaultValue="0"
+            render={({ field: { value, onChange } }) => (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                keyboardType="numeric"
+              />
+            )}
+          />
+        </View>
 
         <View style={styles.step}>
           <Text style={styles.subtitle}>Media</Text>

@@ -1,4 +1,4 @@
-export const API_BASE_URL = "https://cakebackend-mhv0ga23.b4a.run";
+export const API_BASE_URL = "http://192.168.29.124:3001";
 
 export const getApiURL = (endpoint) => API_BASE_URL + endpoint;
 
@@ -12,7 +12,6 @@ export const CREATE_POST = getApiURL("/createPost");
 export const ALL_POSTS = getApiURL("/orders");
 export const UPDATE_POST = getApiURL("/update-order");
 export const DELETE_POST = getApiURL("/delete-order");
-
 
 export const MY_POSTS = getApiURL("/myPosts");
 export const FILE_UPLOAD = getApiURL("/fileUpload");

@@ -13,7 +13,8 @@ export default function PrintToPdf({ route }) {
     senderPhoneNumber: "9347838726",
     receiverName: "Sravan",
     receiverPhoneNumber: "9347838726",
-    shippingAddress: "D 1002 Aparna towers kondapur floor 10th, Hyderabad, 500084",
+    shippingAddress:
+      "D 1002 Aparna towers kondapur floor 10th, Hyderabad, 500084",
     cakeName: "Football Player Cake",
     flavor: "Light Chocolate",
     weight: "1 Kg",
@@ -52,7 +53,15 @@ export default function PrintToPdf({ route }) {
           width: 48%;
         }
         .footer {
+          display: flex;
+          justify-content: space-between;
           margin-top: 40px;
+          align-items: center;
+        }
+        .image {
+          width: 150px; /* Adjust the width to make the image smaller */
+          height: 150px; /* Maintain aspect ratio */
+          margin-left: auto; /* Push the image to the right */
         }
       </style>
     </head>
@@ -80,15 +89,18 @@ export default function PrintToPdf({ route }) {
         </div>
       </div>
       <div class="footer">
-        <p><strong>Message on Card:</strong> ${cakeOrder.messageOnCard}</p>
-        <p><strong>Special Instructions:</strong> ${cakeOrder.specialInstructions}</p>
-        <p><strong>Customer Sign & Name:</strong></p>
-        <p><strong>Delivery Time:</strong></p>
+        <div>
+          <p><strong>Message on Card:</strong> ${cakeOrder.messageOnCard}</p>
+          <p><strong>Special Instructions:</strong> ${cakeOrder.specialInstructions}</p>
+          <p><strong>Customer Sign & Name:</strong></p>
+          <p><strong>Delivery Time:</strong></p>
+        </div>
+        <img class="image" src="${cakeOrder.image}" alt="Cake Image">
       </div>
     </body>
   </html>
   `;
-
+  
   const print = async () => {
     await Print.printAsync({
       html,
@@ -118,7 +130,9 @@ export default function PrintToPdf({ route }) {
           <Button title="Select printer" onPress={selectPrinter} />
           <View style={styles.spacer} />
           {selectedPrinter && (
-            <Text style={styles.printer}>{`Selected printer: ${selectedPrinter.name}`}</Text>
+            <Text
+              style={styles.printer}
+            >{`Selected printer: ${selectedPrinter.name}`}</Text>
           )}
         </>
       )}

@@ -133,7 +133,7 @@ export const otpVerify = (data, token = null) => {
     apiPost(OTP_VERIFY, data)
       .then((res) => {
         if (res.data) {
-          storeData("userData")
+          storeData("userData", res.data)
             .then((value) => {
               console.log("im here", res.data);
               dispatch(saveUserData(res.data));

@@ -25,7 +25,7 @@ const ListAgents = ({ navigation }) => {
 
   const userPosts = async () => {
     try {
-      const response = await fetch(`https://cakebackend-mhv0ga23.b4a.run/allboys`, {
+      const response = await fetch(`http://192.168.29.124:3001/allboys`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const ListAgents = ({ navigation }) => {
   const handleDelete = async (bookingId) => {
     try {
       const response = await fetch(
-        `https://cakebackend-mhv0ga23.b4a.run/delete-order/${bookingId}`,
+        `http://192.168.29.124:3001/delete-order/${bookingId}`,
         {
           method: "DELETE",
           headers: {
